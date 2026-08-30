@@ -1,0 +1,15 @@
+/Users/dothinga/Desktop/Chi-project/Bai tap 3/bin/Debug/net10.0/Bai tap 3
+/Users/dothinga/Desktop/Chi-project/Bai tap 3/bin/Debug/net10.0/Bai tap 3.deps.json
+/Users/dothinga/Desktop/Chi-project/Bai tap 3/bin/Debug/net10.0/Bai tap 3.runtimeconfig.json
+/Users/dothinga/Desktop/Chi-project/Bai tap 3/bin/Debug/net10.0/Bai tap 3.dll
+/Users/dothinga/Desktop/Chi-project/Bai tap 3/bin/Debug/net10.0/Bai tap 3.pdb
+/Users/dothinga/Desktop/Chi-project/Bai tap 3/obj/Debug/net10.0/Bai tap 3.GeneratedMSBuildEditorConfig.editorconfig
+/Users/dothinga/Desktop/Chi-project/Bai tap 3/obj/Debug/net10.0/Bai tap 3.AssemblyInfoInputs.cache
+/Users/dothinga/Desktop/Chi-project/Bai tap 3/obj/Debug/net10.0/Bai tap 3.AssemblyInfo.cs
+/Users/dothinga/Desktop/Chi-project/Bai tap 3/obj/Debug/net10.0/Bai tap 3.csproj.CoreCompileInputs.cache
+/Users/dothinga/Desktop/Chi-project/Bai tap 3/obj/Debug/net10.0/Bai tap 3.sourcelink.json
+/Users/dothinga/Desktop/Chi-project/Bai tap 3/obj/Debug/net10.0/Bai tap 3.dll
+/Users/dothinga/Desktop/Chi-project/Bai tap 3/obj/Debug/net10.0/refint/Bai tap 3.dll
+/Users/dothinga/Desktop/Chi-project/Bai tap 3/obj/Debug/net10.0/Bai tap 3.pdb
+/Users/dothinga/Desktop/Chi-project/Bai tap 3/obj/Debug/net10.0/Bai tap 3.genruntimeconfig.cache
+/Users/dothinga/Desktop/Chi-project/Bai tap 3/obj/Debug/net10.0/ref/Bai tap 3.dll
