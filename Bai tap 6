@@ -1,0 +1,579 @@
+using System;
+
+internal class Program
+{
+    static void Main(string[] args)
+    {
+        // PHẦN 1: ARRAY
+
+        int[] a = new int[10];
+        Random rd = new Random();
+
+        for (int i = 0; i < a.Length; i++)
+        {
+            a[i] = rd.Next(1, 21);
+        }
+
+        Console.WriteLine("Mang ngau nhien:");
+        PrintArray(a);
+
+        Average(a);
+
+        Console.Write("\nNhap gia tri can kiem tra: ");
+        int x = int.Parse(Console.ReadLine());
+        ContainsValue(a, x);
+
+        Console.Write("\nNhap gia tri can tim vi tri: ");
+        x = int.Parse(Console.ReadLine());
+        FindIndex(a, x);
+
+        Console.Write("\nNhap gia tri can xoa: ");
+        x = int.Parse(Console.ReadLine());
+        RemoveElement(a, x);
+
+        MaxMin(a);
+
+        ReverseArray(a);
+
+        FindDuplicate(a);
+
+        RemoveDuplicate(a);
+
+        // PHẦN 2: BUBBLE SORT
+
+        BubbleSort();
+
+        // PHẦN 3: LINEAR SEARCH
+
+        LinearSearch();
+
+        // PHẦN 4: MATRIX
+
+        MatrixProgram();
+    }
+
+
+    // 1. IN MẢNG
+
+    static void PrintArray(int[] a)
+    {
+        for (int i = 0; i < a.Length; i++)
+        {
+            Console.Write(a[i] + " ");
+        }
+
+        Console.WriteLine();
+    }
+
+
+    // 2. TÍNH TRUNG BÌNH
+
+    static void Average(int[] a)
+    {
+        int sum = 0;
+
+        for (int i = 0; i < a.Length; i++)
+        {
+            sum += a[i];
+        }
+
+        double avg = (double)sum / a.Length;
+
+        Console.WriteLine("Gia tri trung binh = " + avg);
+    }
+
+
+    // 3. KIỂM TRA MẢNG CÓ CHỨA GIÁ TRỊ X KHÔNG
+
+    static void ContainsValue(int[] a, int x)
+    {
+        bool found = false;
+
+        for (int i = 0; i < a.Length; i++)
+        {
+            if (a[i] == x)
+            {
+                found = true;
+                break;
+            }
+        }
+
+        if (found)
+            Console.WriteLine("Mang co chua " + x);
+        else
+            Console.WriteLine("Mang khong chua " + x);
+    }
+
+
+    // 4. TÌM INDEX CỦA PHẦN TỬ
+
+    static void FindIndex(int[] a, int x)
+    {
+        int index = -1;
+
+        for (int i = 0; i < a.Length; i++)
+        {
+            if (a[i] == x)
+            {
+                index = i;
+                break;
+            }
+        }
+
+        if (index != -1)
+            Console.WriteLine("Index cua " + x + " la: " + index);
+        else
+            Console.WriteLine("Khong tim thay.");
+    }
+
+
+    // 5. XÓA MỘT GIÁ TRỊ KHỎI MẢNG
+
+    static void RemoveElement(int[] a, int x)
+    {
+        int count = 0;
+
+        for (int i = 0; i < a.Length; i++)
+        {
+            if (a[i] != x)
+                count++;
+        }
+
+        int[] b = new int[count];
+        int j = 0;
+
+        for (int i = 0; i < a.Length; i++)
+        {
+            if (a[i] != x)
+            {
+                b[j] = a[i];
+                j++;
+            }
+        }
+
+        Console.WriteLine("Mang sau khi xoa " + x + ":");
+        PrintArray(b);
+    }
+
+
+    // 6. TÌM MAX VÀ MIN
+
+    static void MaxMin(int[] a)
+    {
+        int max = a[0];
+        int min = a[0];
+
+        for (int i = 1; i < a.Length; i++)
+        {
+            if (a[i] > max)
+                max = a[i];
+
+            if (a[i] < min)
+                min = a[i];
+        }
+
+        Console.WriteLine("Max = " + max);
+        Console.WriteLine("Min = " + min);
+    }
+
+
+    // 7. ĐẢO NGƯỢC MẢNG
+
+    static void ReverseArray(int[] a)
+    {
+        Console.WriteLine("Mang dao nguoc:");
+
+        for (int i = a.Length - 1; i >= 0; i--)
+        {
+            Console.Write(a[i] + " ");
+        }
+
+        Console.WriteLine();
+    }
+
+
+    // 8. TÌM GIÁ TRỊ TRÙNG
+
+    static void FindDuplicate(int[] a)
+    {
+        Console.WriteLine("Cac gia tri bi trung:");
+
+        bool hasDuplicate = false;
+
+        for (int i = 0; i < a.Length; i++)
+        {
+            bool appearedBefore = false;
+
+            for (int k = 0; k < i; k++)
+            {
+                if (a[k] == a[i])
+                {
+                    appearedBefore = true;
+                    break;
+                }
+            }
+
+            if (appearedBefore)
+                continue;
+
+            for (int j = i + 1; j < a.Length; j++)
+            {
+                if (a[i] == a[j])
+                {
+                    Console.Write(a[i] + " ");
+                    hasDuplicate = true;
+                    break;
+                }
+            }
+        }
+
+        if (!hasDuplicate)
+            Console.Write("Khong co");
+
+        Console.WriteLine();
+    }
+
+
+    // 9. XÓA CÁC PHẦN TỬ TRÙNG
+
+    static void RemoveDuplicate(int[] a)
+    {
+        int[] temp = new int[a.Length];
+        int count = 0;
+
+        for (int i = 0; i < a.Length; i++)
+        {
+            bool duplicate = false;
+
+            for (int j = 0; j < count; j++)
+            {
+                if (a[i] == temp[j])
+                {
+                    duplicate = true;
+                    break;
+                }
+            }
+
+            if (!duplicate)
+            {
+                temp[count] = a[i];
+                count++;
+            }
+        }
+
+        Console.WriteLine("Mang sau khi xoa phan tu trung:");
+
+        for (int i = 0; i < count; i++)
+        {
+            Console.Write(temp[i] + " ");
+        }
+
+        Console.WriteLine();
+    }
+
+
+    // 10. BUBBLE SORT - NHẬP 10 SỐ
+
+    static void BubbleSort()
+    {
+        int[] a = new int[10];
+
+        Console.WriteLine("\nBUBBLE SORT");
+
+        for (int i = 0; i < 10; i++)
+        {
+            Console.Write("Nhap so thu " + (i + 1) + ": ");
+            a[i] = int.Parse(Console.ReadLine());
+        }
+
+        for (int i = 0; i < a.Length - 1; i++)
+        {
+            for (int j = 0; j < a.Length - i - 1; j++)
+            {
+                if (a[j] > a[j + 1])
+                {
+                    int temp = a[j];
+                    a[j] = a[j + 1];
+                    a[j + 1] = temp;
+                }
+            }
+        }
+
+        Console.WriteLine("Mang sau khi sap xep:");
+
+        for (int i = 0; i < a.Length; i++)
+        {
+            Console.Write(a[i] + " ");
+        }
+
+        Console.WriteLine();
+    }
+
+
+    // 11. LINEAR SEARCH
+
+    static void LinearSearch()
+    {
+        Console.WriteLine("\nLINEAR SEARCH");
+
+        Console.Write("Nhap mot cau: ");
+        string sentence = Console.ReadLine();
+
+        Console.Write("Nhap tu can tim: ");
+        string word = Console.ReadLine();
+
+        string[] words = sentence.Split(' ');
+
+        bool found = false;
+
+        for (int i = 0; i < words.Length; i++)
+        {
+            if (words[i].Equals(word, StringComparison.OrdinalIgnoreCase))
+            {
+                Console.WriteLine("Tim thay tu tai vi tri " + i);
+                found = true;
+                break;
+            }
+        }
+
+        if (!found)
+        {
+            Console.WriteLine("Khong tim thay tu.");
+        }
+    }
+
+
+    // 12. CHƯƠNG TRÌNH MATRIX
+
+    static void MatrixProgram()
+    {
+        Console.WriteLine("\nMATRIX");
+
+        Console.Write("Nhap N (so dong): ");
+        int n = int.Parse(Console.ReadLine());
+
+        Console.Write("Nhap M (so cot): ");
+        int m = int.Parse(Console.ReadLine());
+
+        int[,] matrix = new int[n, m];
+
+        Random rd = new Random();
+
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < m; j++)
+            {
+                matrix[i, j] = rd.Next(1, 101);
+            }
+        }
+
+        PrintMatrix(matrix);
+
+        Console.Write("\nNhap dong i (1 - " + n + "): ");
+        int row = int.Parse(Console.ReadLine()) - 1;
+
+        PrintRow(matrix, row);
+
+        Console.Write("\nNhap cot i (1 - " + m + "): ");
+        int col = int.Parse(Console.ReadLine()) - 1;
+
+        PrintColumn(matrix, col);
+
+        MatrixMax(matrix);
+
+        MinRow(matrix, row);
+
+        MinColumn(matrix, col);
+
+        Transpose(matrix);
+
+        Diagonal(matrix);
+    }
+
+
+    // 13. IN MATRIX
+
+    static void PrintMatrix(int[,] a)
+    {
+        Console.WriteLine("\nMatrix:");
+
+        int n = a.GetLength(0);
+        int m = a.GetLength(1);
+
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < m; j++)
+            {
+                Console.Write(a[i, j] + "\t");
+            }
+
+            Console.WriteLine();
+        }
+    }
+
+
+    // 14. IN DÒNG i
+
+    static void PrintRow(int[,] a, int row)
+    {
+        if (row < 0 || row >= a.GetLength(0))
+        {
+            Console.WriteLine("Dong khong hop le.");
+            return;
+        }
+
+        Console.WriteLine("Dong " + (row + 1) + ":");
+
+        for (int j = 0; j < a.GetLength(1); j++)
+        {
+            Console.Write(a[row, j] + " ");
+        }
+
+        Console.WriteLine();
+    }
+
+
+    // 15. IN CỘT i
+
+    static void PrintColumn(int[,] a, int col)
+    {
+        if (col < 0 || col >= a.GetLength(1))
+        {
+            Console.WriteLine("Cot khong hop le.");
+            return;
+        }
+
+        Console.WriteLine("Cot " + (col + 1) + ":");
+
+        for (int i = 0; i < a.GetLength(0); i++)
+        {
+            Console.Write(a[i, col] + " ");
+        }
+
+        Console.WriteLine();
+    }
+
+
+    // 16. MAX CỦA MATRIX
+
+    static void MatrixMax(int[,] a)
+    {
+        int max = a[0, 0];
+
+        for (int i = 0; i < a.GetLength(0); i++)
+        {
+            for (int j = 0; j < a.GetLength(1); j++)
+            {
+                if (a[i, j] > max)
+                {
+                    max = a[i, j];
+                }
+            }
+        }
+
+        Console.WriteLine("\nMax cua matrix = " + max);
+    }
+
+
+    // 17. MIN CỦA DÒNG i
+
+    static void MinRow(int[,] a, int row)
+    {
+        if (row < 0 || row >= a.GetLength(0))
+        {
+            Console.WriteLine("Dong khong hop le.");
+            return;
+        }
+
+        int min = a[row, 0];
+
+        for (int j = 1; j < a.GetLength(1); j++)
+        {
+            if (a[row, j] < min)
+            {
+                min = a[row, j];
+            }
+        }
+
+        Console.WriteLine("Min cua dong " + (row + 1) + " = " + min);
+    }
+
+
+    // 18. MIN CỦA CỘT i
+
+    static void MinColumn(int[,] a, int col)
+    {
+        if (col < 0 || col >= a.GetLength(1))
+        {
+            Console.WriteLine("Cot khong hop le.");
+            return;
+        }
+
+        int min = a[0, col];
+
+        for (int i = 1; i < a.GetLength(0); i++)
+        {
+            if (a[i, col] < min)
+            {
+                min = a[i, col];
+            }
+        }
+
+        Console.WriteLine("Min cua cot " + (col + 1) + " = " + min);
+    }
+
+
+    // 19. CHUYỂN VỊ MATRIX
+
+    static void Transpose(int[,] a)
+    {
+        int n = a.GetLength(0);
+        int m = a.GetLength(1);
+
+        int[,] transpose = new int[m, n];
+
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < m; j++)
+            {
+                transpose[j, i] = a[i, j];
+            }
+        }
+
+        Console.WriteLine("\nMatrix sau khi chuyen vi:");
+        PrintMatrix(transpose);
+    }
+
+
+    // 20. ĐƯỜNG CHÉO CHÍNH VÀ ĐƯỜNG CHÉO PHỤ
+
+    static void Diagonal(int[,] a)
+    {
+        int n = a.GetLength(0);
+        int m = a.GetLength(1);
+
+        if (n != m)
+        {
+            Console.WriteLine("Khong phai ma tran vuong.");
+            return;
+        }
+
+        Console.WriteLine("Duong cheo chinh:");
+
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write(a[i, i] + " ");
+        }
+
+        Console.WriteLine();
+
+        Console.WriteLine("Duong cheo phu:");
+
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write(a[i, n - 1 - i] + " ");
+        }
+
+        Console.WriteLine();
+    }
+}
